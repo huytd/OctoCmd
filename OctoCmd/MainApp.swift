@@ -68,7 +68,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                 }
             }
             NSApp.hide(nil)
-            return event
+            return nil
         }
         
         NSEvent.addGlobalMonitorForEvents(matching: .flagsChanged, handler: { event in
