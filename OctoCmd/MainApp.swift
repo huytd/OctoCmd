@@ -25,7 +25,7 @@ struct MainApp: App {
     }
 }
 
-class AppDelegate: NSObject, NSApplicationDelegate {
+final class AppDelegate: NSObject, NSApplicationDelegate {
     let sharedData = SharedData()
     
     func applicationDidFinishLaunching(_ notification: Notification) {

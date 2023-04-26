@@ -17,10 +17,13 @@ extension Sequence where Element: Hashable {
 
 struct WindowDef: Identifiable, Hashable {
     let id = UUID()
-    var hashValue: Int { get { return pid.hashValue }}
     var name = ""
     var wid = -1
     var pid = -1
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(pid)
+    }
 }
 
 func ==(left: WindowDef, right: WindowDef) -> Bool {
@@ -41,7 +44,7 @@ func getWindowsList() -> [WindowDef] {
     }.uniqued()
 }
 
-class SharedData: ObservableObject {
+final class SharedData: ObservableObject {
     @Published var ignored: [Int] = (UserDefaults.standard.array(forKey: "octoCmd_Ignored") as? [Int] ?? [])
     @Published var windows: [WindowDef] = getWindowsList()
     @Published var lastPid = -1
