@@ -1,34 +1,15 @@
 //
-//  main.swift
+//  AppDelegate.swift
 //  OctoCmd
 //
-//  Created by Huy Tran on 4/25/23.
+//  Created by Khoa Le on 28/04/2023.
 //
 
-import SwiftUI
-
-@main
-struct MainApp: App {
-    @NSApplicationDelegateAdaptor private var appDelegate: AppDelegate
-        
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-                .environmentObject(appDelegate.sharedData)
-                .fixedSize()
-        }
-        .windowStyle(.hiddenTitleBar)
-        .windowResizability(.contentSize)
-        .commands {
-            CommandGroup(replacing: .newItem, addition: {})
-        }
-    }
-}
+import Cocoa
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
     let sharedData = SharedData()
 
-    
     func applicationDidFinishLaunching(_ notification: Notification) {
         for window in NSApplication.shared.windows {
             window.level = .floating
@@ -40,7 +21,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             window.standardWindowButton(.zoomButton)!.isHidden = true
             window.center()
         }
-        
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             let isTrusted = AXIsProcessTrusted()
             print("Is trusted", isTrusted)
@@ -49,7 +30,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                 let enabled = AXIsProcessTrustedWithOptions(options)
             }
         }
-        
+
         NSEvent.addLocalMonitorForEvents(matching: .keyDown) { event in
             let pressedChar = event.charactersIgnoringModifiers?.uppercased()
             let matches = self.sharedData.windows
@@ -71,7 +52,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             // Send Cmd + Q or Nil event
             return event.keyCode == 12 && event.modifierFlags.contains(.command) ? event : nil
         }
-        
+
         NSEvent.addGlobalMonitorForEvents(matching: .flagsChanged, handler: { event in
             if event.keyCode == 54 {
                 if event.modifierFlags.contains(.command) {
@@ -89,51 +70,5 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                 }
             }
         })
-    }
-}
-
-struct VisualEffectBackground: NSViewRepresentable {
-    private let material: NSVisualEffectView.Material
-    private let blendingMode: NSVisualEffectView.BlendingMode
-    private let isEmphasized: Bool
-    
-    fileprivate init(
-        material: NSVisualEffectView.Material,
-        blendingMode: NSVisualEffectView.BlendingMode,
-        emphasized: Bool) {
-        self.material = material
-        self.blendingMode = blendingMode
-        self.isEmphasized = emphasized
-    }
-    
-    func makeNSView(context: Context) -> NSVisualEffectView {
-        let view = NSVisualEffectView()
-        
-        // Not certain how necessary this is
-        view.autoresizingMask = [.width, .height]
-        
-        return view
-    }
-    
-    func updateNSView(_ nsView: NSVisualEffectView, context: Context) {
-        nsView.material = material
-        nsView.blendingMode = blendingMode
-        nsView.isEmphasized = isEmphasized
-    }
-}
-
-extension View {
-    func visualEffect(
-        material: NSVisualEffectView.Material,
-        blendingMode: NSVisualEffectView.BlendingMode = .behindWindow,
-        emphasized: Bool = false
-    ) -> some View {
-        background(
-            VisualEffectBackground(
-                material: material,
-                blendingMode: blendingMode,
-                emphasized: emphasized
-            )
-        )
     }
 }
