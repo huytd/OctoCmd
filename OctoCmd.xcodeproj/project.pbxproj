@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A33783029FAF8A000405748 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A33782F29FAF8A000405748 /* AppDelegate.swift */; };
+		6A33783329FAF8DB00405748 /* WindowDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A33783229FAF8DB00405748 /* WindowDef.swift */; };
+		6A33783529FAFA6400405748 /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A33783429FAFA6400405748 /* Sequence+Extensions.swift */; };
 		9F48374729F8B556002B160A /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F48374629F8B556002B160A /* MainApp.swift */; };
 		9F81EA4129F856A40007053E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F81EA4029F856A40007053E /* ContentView.swift */; };
 		9F81EA4629F856A90007053E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F81EA4529F856A90007053E /* Preview Assets.xcassets */; };
@@ -15,8 +18,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6A33782F29FAF8A000405748 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6A33783229FAF8DB00405748 /* WindowDef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowDef.swift; sourceTree = "<group>"; };
+		6A33783429FAFA6400405748 /* Sequence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
 		9F48374629F8B556002B160A /* MainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApp.swift; sourceTree = "<group>"; };
-		9F48374D29F8DF46002B160A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9F48374D29F8DF46002B160A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F81EA3B29F856A40007053E /* OctoCmd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OctoCmd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F81EA4029F856A40007053E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9F81EA4529F856A90007053E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -36,6 +42,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A33783829FAFB6000405748 /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				6A33782F29FAF8A000405748 /* AppDelegate.swift */,
+				9F48374629F8B556002B160A /* MainApp.swift */,
+			);
+			path = Apps;
+			sourceTree = "<group>";
+		};
+		6A33783929FAFB7400405748 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9FB6EEC629F8FDAF0024D8EF /* Assets.xcassets */,
+				9F81EA4729F856A90007053E /* OctoCmd.entitlements */,
+				9F48374D29F8DF46002B160A /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		6A33783A29FAFB8A00405748 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				6A33783429FAFA6400405748 /* Sequence+Extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		6A33783B29FAFEDC00405748 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				6A33783C29FAFF6A00405748 /* AppSwitcher */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		6A33783C29FAFF6A00405748 /* AppSwitcher */ = {
+			isa = PBXGroup;
+			children = (
+				9F81EA4029F856A40007053E /* ContentView.swift */,
+				9FB6EEC829F97A1D0024D8EF /* SharedData.swift */,
+			);
+			path = AppSwitcher;
+			sourceTree = "<group>";
+		};
+		6A33783D29FAFFA500405748 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6A33783229FAF8DB00405748 /* WindowDef.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		9F81EA3229F856A40007053E = {
 			isa = PBXGroup;
 			children = (
@@ -55,13 +113,12 @@
 		9F81EA3D29F856A40007053E /* OctoCmd */ = {
 			isa = PBXGroup;
 			children = (
-				9F48374D29F8DF46002B160A /* Info.plist */,
-				9F81EA4029F856A40007053E /* ContentView.swift */,
-				9F81EA4729F856A90007053E /* OctoCmd.entitlements */,
+				6A33783829FAFB6000405748 /* Apps */,
+				6A33783B29FAFEDC00405748 /* Features */,
+				6A33783D29FAFFA500405748 /* Models */,
 				9F81EA4429F856A90007053E /* Preview Content */,
-				9F48374629F8B556002B160A /* MainApp.swift */,
-				9FB6EEC629F8FDAF0024D8EF /* Assets.xcassets */,
-				9FB6EEC829F97A1D0024D8EF /* SharedData.swift */,
+				6A33783929FAFB7400405748 /* Resources */,
+				6A33783A29FAFB8A00405748 /* Utils */,
 			);
 			path = OctoCmd;
 			sourceTree = "<group>";
@@ -148,7 +205,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A33783529FAFA6400405748 /* Sequence+Extensions.swift in Sources */,
+				6A33783029FAF8A000405748 /* AppDelegate.swift in Sources */,
 				9FB6EEC929F97A1D0024D8EF /* SharedData.swift in Sources */,
+				6A33783329FAF8DB00405748 /* WindowDef.swift in Sources */,
 				9F81EA4129F856A40007053E /* ContentView.swift in Sources */,
 				9F48374729F8B556002B160A /* MainApp.swift in Sources */,
 			);
@@ -275,7 +335,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = OctoCmd/OctoCmd.entitlements;
+				CODE_SIGN_ENTITLEMENTS = OctoCmd/Resources/OctoCmd.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -284,7 +344,7 @@
 				DEVELOPMENT_TEAM = H8K5TGST7W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = OctoCmd/Info.plist;
+				INFOPLIST_FILE = OctoCmd/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = OctoCmd;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -305,7 +365,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = OctoCmd/OctoCmd.entitlements;
+				CODE_SIGN_ENTITLEMENTS = OctoCmd/Resources/OctoCmd.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -314,7 +374,7 @@
 				DEVELOPMENT_TEAM = H8K5TGST7W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = OctoCmd/Info.plist;
+				INFOPLIST_FILE = OctoCmd/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = OctoCmd;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
