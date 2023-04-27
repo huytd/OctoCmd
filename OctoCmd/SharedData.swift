@@ -20,6 +20,7 @@ struct WindowDef: Identifiable, Hashable {
     var name = ""
     var wid = -1
     var pid = -1
+    var alias = ""
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(pid)
@@ -36,10 +37,19 @@ func getWindowsList() -> [WindowDef] {
     let infoList = windowsListInfo as! [[String: Any]]
     let visibleWindows = infoList.filter { $0["kCGWindowLayer"] as! Int == 0 && $0["kCGWindowOwnerName"] as! String != "WindowManager" }
     return visibleWindows.map { (dict) -> WindowDef in
+        let name = dict["kCGWindowOwnerName"] as! String
+        let wid = dict["kCGWindowNumber"] as! Int
+        let pid = dict["kCGWindowOwnerPID"] as! Int
+        // So far, Google Chrome is the only alias I want to hardcode
+        var alias = String(name.first!).uppercased()
+        if name == "Google Chrome" {
+            alias = "C"
+        }
         return WindowDef(
-            name: dict["kCGWindowOwnerName"] as! String,
-            wid: dict["kCGWindowNumber"] as! Int,
-            pid: dict["kCGWindowOwnerPID"] as! Int
+            name: name,
+            wid: wid,
+            pid: pid,
+            alias: alias
         )
     }.uniqued()
 }

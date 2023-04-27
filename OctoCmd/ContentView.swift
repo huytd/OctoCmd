@@ -20,7 +20,7 @@ struct ContentView: View {
             
             List(sharedData.windows) { win in
                 HStack {
-                    Text("\(String(win.name[win.name.startIndex]).uppercased())")
+                    Text("\(win.alias)")
                         .bold()
                         .padding(2)
                         .font(.system(size: 13.0).monospaced())
@@ -75,7 +75,9 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
+    static var sharedData = SharedData()
     static var previews: some View {
         ContentView()
+            .environmentObject(sharedData)
     }
 }

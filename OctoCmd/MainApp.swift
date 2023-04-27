@@ -27,6 +27,7 @@ struct MainApp: App {
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
     let sharedData = SharedData()
+
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         for window in NSApplication.shared.windows {
@@ -50,33 +51,36 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         NSEvent.addLocalMonitorForEvents(matching: .keyDown) { event in
-            let pressedChar = event.charactersIgnoringModifiers?.lowercased()
-            print(self.sharedData.ignored)
+            let pressedChar = event.charactersIgnoringModifiers?.uppercased()
             let matches = self.sharedData.windows
                 .filter { win in
                     !self.sharedData.ignored.contains(win.pid)
                 }
                 .filter { win in
-                    win.name.lowercased().starts(with: pressedChar!)
+                    win.alias == pressedChar
                 }
             for window in matches {
+                print("Compare \(self.sharedData.lastPid) with \(window.pid)")
                 if self.sharedData.lastPid != window.pid {
                     let app = NSRunningApplication(processIdentifier: pid_t(window.pid))
                     app?.activate(options: .activateIgnoringOtherApps)
-                    self.sharedData.lastPid = window.pid
                     break
                 }
             }
             NSApp.hide(nil)
-            return nil
+            // Send Cmd + Q or Nil event
+            return event.keyCode == 12 && event.modifierFlags.contains(.command) ? event : nil
         }
         
         NSEvent.addGlobalMonitorForEvents(matching: .flagsChanged, handler: { event in
             if event.keyCode == 54 {
                 if event.modifierFlags.contains(.command) {
+                    if let frontMost = NSWorkspace.shared.frontmostApplication {
+                        self.sharedData.lastPid = Int(frontMost.processIdentifier)
+                    }
                     self.sharedData.updateWindowsList()
                     // key down
-                    print("Show app")
+                    print("Show app from", self.sharedData.lastPid)
                     NSApp.activate(ignoringOtherApps: true)
                 } else {
                     // key up
