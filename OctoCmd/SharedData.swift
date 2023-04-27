@@ -21,6 +21,7 @@ struct WindowDef: Identifiable, Hashable {
     var wid = -1
     var pid = -1
     var alias = ""
+    var icon: NSImage
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(pid)
@@ -45,11 +46,16 @@ func getWindowsList() -> [WindowDef] {
         if name == "Google Chrome" {
             alias = "C"
         }
+        let matchedApp = NSWorkspace.shared.runningApplications.filter { app in
+            app.processIdentifier == pid
+        }.first
+        let icon = matchedApp?.icon
         return WindowDef(
             name: name,
             wid: wid,
             pid: pid,
-            alias: alias
+            alias: alias,
+            icon: icon!
         )
     }.uniqued()
 }

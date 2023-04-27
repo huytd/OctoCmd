@@ -28,6 +28,10 @@ struct ContentView: View {
                         .background(.bar)
                         .cornerRadius(4.0)
                         .opacity(sharedData.ignored.contains(win.pid) ? 0.25 : 1.0)
+                    Image(nsImage: win.icon)
+                        .frame(width: 24.0, height: 22.0)
+                        .scaledToFit()
+                        .opacity(sharedData.ignored.contains(win.pid) ? 0.25 : 1.0)
                     Text("\(win.name)")
                         .padding(2)
                         .font(.system(size: 15.0))
@@ -40,6 +44,7 @@ struct ContentView: View {
                     .font(.system(size: 10.0).monospaced())
                 }
                 .frame(maxWidth: .infinity, alignment: .topLeading)
+                .padding(.bottom, 4.0)
             }
             .background(.clear)
             .scrollContentBackground(.hidden)
@@ -70,7 +75,7 @@ struct ContentView: View {
             .padding()
         }
         .padding(0)
-        .frame(width: 320, height: 500)
+        .frame(width: 330, height: 500)
     }
 }
 

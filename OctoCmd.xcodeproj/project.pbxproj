@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F255DFF29FA143000452DE1 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F255DFE29FA143000452DE1 /* Utils.swift */; };
 		9F48374729F8B556002B160A /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F48374629F8B556002B160A /* MainApp.swift */; };
 		9F81EA4129F856A40007053E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F81EA4029F856A40007053E /* ContentView.swift */; };
 		9F81EA4629F856A90007053E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F81EA4529F856A90007053E /* Preview Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F255DFE29FA143000452DE1 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		9F48374629F8B556002B160A /* MainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApp.swift; sourceTree = "<group>"; };
 		9F48374D29F8DF46002B160A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9F81EA3B29F856A40007053E /* OctoCmd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OctoCmd.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +64,7 @@
 				9F48374629F8B556002B160A /* MainApp.swift */,
 				9FB6EEC629F8FDAF0024D8EF /* Assets.xcassets */,
 				9FB6EEC829F97A1D0024D8EF /* SharedData.swift */,
+				9F255DFE29FA143000452DE1 /* Utils.swift */,
 			);
 			path = OctoCmd;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 				9FB6EEC929F97A1D0024D8EF /* SharedData.swift in Sources */,
 				9F81EA4129F856A40007053E /* ContentView.swift in Sources */,
 				9F48374729F8B556002B160A /* MainApp.swift in Sources */,
+				9F255DFF29FA143000452DE1 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
