@@ -330,7 +330,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                 if appDelegate.sharedData.isScrollMode {
                     if type == .keyDown {
                         let keyCode = event.getIntegerValueField(.keyboardEventKeycode)
-                        let scrollSpeed: Double = 5.0
+                        let scrollSpeed: Double = 2.0
                         print("[ScrollMode] keyDown captured, keyCode=\(keyCode)")
 
                         // Vertical scrolling
@@ -1668,7 +1668,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         scrollModeGlobalKeyDownMonitor = NSEvent.addGlobalMonitorForEvents(matching: [.keyDown]) { [weak self] event in
             guard let self = self, self.sharedData.isScrollMode else { return }
             let keyCode = event.keyCode
-            let scrollSpeed: Double = 5.0
+            let scrollSpeed: Double = 2.0
             print("[ScrollMode][Global] keyDown keyCode=\(keyCode)")
             switch keyCode {
             case 38: // J
